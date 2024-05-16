@@ -9,7 +9,7 @@ const images = [
   'images/rigth.png',
 ]
 
-const gridSize = 50;
+const gridSize = 20;
 
 for(i = 0; i < gridSize; i++){
   for(j = 0; j < gridSize; j++){
@@ -69,7 +69,7 @@ function colapseLoop() {
   colapse(objects[randomIndex].id);
 
   // Chamar colapseLoop novamente após meio segundo
-  setTimeout(colapseLoop, 1);
+  setTimeout(colapseLoop, 50);
 }
 
 function colapse(id) {
@@ -78,10 +78,10 @@ function colapse(id) {
   const random = Math.floor(Math.random() * object.possible.length);
   object.imageSrc = images[object.possible[random]];
   // update neighbors up, down, left, right
-  const up = objects.find(o => o.id === id - gridSize);
-  const down = objects.find(o => o.id === id + gridSize);
-  const left = objects.find(o => o.id === id - 1);
-  const right = objects.find(o => o.id === id + 1);
+  const up = id - gridSize >= 0 ? objects.find(o => o.id === id - gridSize) : null;
+  const down = id + gridSize < gridSize * gridSize ? objects.find(o => o.id === id + gridSize) : null;
+  const left = id % gridSize !== 0 ? objects.find(o => o.id === id - 1) : null;
+  const right = (id + 1) % gridSize !== 0 ? objects.find(o => o.id === id + 1) : null;
   if(up) {
     switch (object.possible[random]) {
       case 0:
