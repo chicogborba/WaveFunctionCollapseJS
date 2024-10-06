@@ -7,7 +7,7 @@ const images = [
   'images/up.png', 
   'images/down.png',
   'images/left.png',
-  'images/rigth.png', // Corrija a ortografia de 'right'
+  'images/right.png', 
 ];
 
 // Define o tamanho da grade, que será uma grade quadrada (gridSize x gridSize)
@@ -20,7 +20,7 @@ for(i = 0; i < gridSize; i++){
     const object = {
       id: i * gridSize + j, // Identificador único da célula
       possible: [0, 1, 2, 3, 4], // Possibilidades de estado da célula (imagens)
-      colapsed: false, // Indica se a célula foi colapsada (definida)
+      collapsed: false, // Indica se a célula foi colapsada (definida)
       imageSrc: undefined // Fonte da imagem da célula
     }
     // Adiciona o objeto à lista de objetos
@@ -55,7 +55,7 @@ function firstColapse(id) {
 // Função que executa o loop de colapso para colapsar células adjacentes
 function colapseLoop() {
   // Verifica se ainda existem células que não foram colapsadas
-  if (!objects.some(object => !object.colapsed)) return;
+  if (!objects.some(object => !object.collapsed)) return;
 
   // Inicia a busca pela célula com o menor número de possibilidades
   let minPossibilities = Infinity; // Inicializa o mínimo de possibilidades
@@ -63,10 +63,10 @@ function colapseLoop() {
 
   objects.forEach((object, index) => {
     // Se a célula não foi colapsada e tem menos possibilidades que o mínimo atual
-    if (!object.colapsed && object.possible.length < minPossibilities) {
+    if (!object.collapsed && object.possible.length < minPossibilities) {
       minPossibilities = object.possible.length; // Atualiza o mínimo
       candidates = [index]; // Atualiza a lista de candidatos
-    } else if (!object.colapsed && object.possible.length === minPossibilities) {
+    } else if (!object.collapsed && object.possible.length === minPossibilities) {
       candidates.push(index); // Adiciona à lista de candidatos se houver empate
     }
   });
@@ -84,7 +84,7 @@ function colapseLoop() {
 // Função que colapsa uma célula específica
 function colapse(id) {
   const object = objects.find(o => o.id === id); // Encontra o objeto correspondente
-  object.colapsed = true; // Marca o objeto como colapsado
+  object.collapsed = true; // Marca o objeto como colapsado
   const random = Math.floor(Math.random() * object.possible.length); // Seleciona uma possibilidade aleatória
   object.imageSrc = images[object.possible[random]]; // Define a imagem correspondente à possibilidade escolhida
 
@@ -156,7 +156,7 @@ function updateGrid() {
   const grid = document.getElementById('grid'); // Obtém o elemento da grade no DOM
   objects.forEach((object, index) => {
     const div = document.getElementById(object.id); // Obtém a div correspondente à célula
-    if(object.colapsed) {
+    if(object.collapsed) {
       div.innerHTML = "<img class='cell' src='" + object.imageSrc + "' />"; // Exibe a imagem da célula colapsada
       const newDiv = div.cloneNode(true);
       div.parentNode.replaceChild(newDiv, div); // Substitui a div antiga pela nova
@@ -183,7 +183,7 @@ function resetGrid() {
   objects.forEach(object => {
     // Restaura cada objeto ao seu estado inicial
     object.possible = [0, 1, 2, 3, 4]; // Todas as possibilidades estão disponíveis novamente
-    object.colapsed = false; // Marca como não colapsado
+    object.collapsed = false; // Marca como não colapsado
     object.imageSrc = undefined; // Remove a imagem
   });
   populateGrid(); // Repopula a grade
