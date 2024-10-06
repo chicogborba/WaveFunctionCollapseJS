@@ -1,15 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-  <meta charset='utf-8'>
-  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-  <title>Page Title</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1'>
-  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algoritmo Wave Function Collapse</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-  <div class="mainGrid" id="grid">
-  </div>
-  <script src='main.js'></script>
+    <header>
+        <h1>Wave Function Collapse (WFC) em JS</h1>
+    </header>
+    
+    <section class="content">
+        <h2>O que é o Algoritmo Wave Function Collapse? 🤔</h2>
+        <p>
+            O <strong>Wave Function Collapse</strong> (WFC) é um algoritmo com um nome interessante e até um pouco assustador, mas sua implementação é surpreendentemente simples. Ele foi criado por <a href="https://github.com/mxgmn/WaveFunctionCollapse" target="_blank">Maxim Gumin</a> e está disponível como um projeto open-source.
+        </p>
+        <p>
+            O WFC se inspira na física quântica para realizar a geração procedural de conteúdos. Imagine um mapa, onde cada quadrado pode ser qualquer uma das possibilidades iniciais. Quando observamos um quadrado, ele "colapsa" para um estado específico, semelhante ao colapso da função de onda na física quântica. Mas aqui entra o interessante: com a criação de regras, o número de possibilidades para os quadrados vizinhos é reduzido.
+        </p>
+        <p>
+            Por exemplo, se um quadrado contém uma rua que vai para cima, o quadrado adjacente deve ter uma rua que vem de baixo, garantindo a continuidade. Esse efeito se propaga, e a cada colapso, as possibilidades dos quadrados vizinhos se restringem, até que o mapa inteiro esteja formado. Assim, cada iteração gera um resultado único, respeitando as restrições impostas.
+        </p>
+        <p>
+            Neste exemplo, usamos texturas de ruas para criar um mapa onde todas as ruas se conectam perfeitamente, e o mapa gerado será sempre diferente do anterior. É uma maneira poderosa de criar mundos únicos e consistentes com simplicidade.
+        </p>
+
+        <h2>Como Funciona? ⚙️</h2>
+        <p>
+            O algoritmo começa com um grid vazio e, gradualmente, preenche os espaços de modo a garantir que cada célula siga as regras definidas pelos elementos vizinhos. Ele faz uso do conceito de <a href="https://en.wikipedia.org/wiki/Entropy" target="_blank">entropia</a>, oriundo da <a href="https://pt.wikipedia.org/wiki/Teoria_da_informa%C3%A7%C3%A3o" target="_blank">teoria da informação</a> desenvolvida por Claude Shannon. A entropia aqui indica a quantidade de incerteza: células com menos possibilidades (menor entropia) são colapsadas primeiro.
+        </p>
+        <p>
+            Esse processo é essencialmente uma propagação de restrições. Cada célula, ao ser determinada, impõe limites nas células vizinhas, reduzindo suas possibilidades, e assim sucessivamente até que todo o grid esteja preenchido de forma consistente.
+        </p>
+        <p>
+            Se você estiver interessado em aprender mais sobre teoria da informação, recomendo muito as aulas e o livro do <strong>David MacKay</strong>. Ele explica de forma clara e didática conceitos fundamentais sobre informação, compressão e entropia, que estão por trás do WFC. Você pode encontrar o livro gratuitamente no site da Universidade de Cambridge: <a href="http://www.inference.org.uk/itprnn/book.html" target="_blank">"Information Theory, Inference, and Learning Algorithms"</a>, e também a <a href="https://youtube.com/playlist?list=PLruBu5BI5n4aFpG32iMbdWoRVAA-Vcso6&si=6j0Mp_mxyD7XAIU6" target="_blank">playlist das aulas</a> no YouTube. 
+        </p>
+        <p>
+            Na minha opinião, todo programador deveria ao menos dar uma chance e se aprofundar um pouco nessa área. A teoria da informação trata dados de maneira lógica e computável, algo fundamental e extremamente presente na informática. Ela nos traz algoritmos fascinantes, como os de <a href="https://en.wikipedia.org/wiki/Hamming_code" target="_blank">correção de erros</a>, exemplificados pelos <strong>códigos de Hamming</strong> e <a href="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction" target="_blank">Reed-Solomon</a>, que são aplicados desde comunicações digitais até armazenamento de dados para garantir integridade e confiabilidade. Além disso, estudar essa área pode até melhorar sua estratégia em jogos, como demonstrado de forma brilhante no vídeo do <a href="https://youtu.be/FRlbNOno5VA" target="_blank">Mark Rober sobre o jogo Cara a Cara</a>.
+        </p>
+
+        <h2>Casos de Uso 🚀</h2>
+        <ul>
+            <li><strong>Geração de Mapas em Jogos:</strong> 🎮 O WFC é amplamente utilizado para criar ambientes de jogo de forma procedural, garantindo que cada cenário seja único e, ao mesmo tempo, consistente. Veja um exemplo no jogo <a href="https://oskarstalberg.com/Townscaper/" target="_blank">Townscaper</a>, que utiliza conceitos semelhantes para gerar cidades encantadoras de forma totalmente procedural.</li>
+            <li><strong>Geração de Texturas:</strong> 🎨 Criar texturas repetitivas e sem emendas, como terrenos para jogos ou fundos de sites. Isso garante que, mesmo que a textura seja replicada, ela parecerá contínua e natural.</li>
+            <li><strong>Criação de Puzzles:</strong> 🧩 Gerar puzzles que respeitam regras específicas para manter a solução possível, como em quebra-cabeças. O WFC pode ser usado para garantir que as peças de um quebra-cabeça sejam compatíveis e tenham uma solução lógica.</li>
+        </ul>
+
+        <h2>Mais Recursos e Projetos</h2>
+        <p>
+            Você pode encontrar uma implementação do algoritmo <strong>Wave Function Collapse</strong> com comentários detalhados no repositório original do Maxim Gumin no GitHub: <a href="https://github.com/mxgmn/WaveFunctionCollapse" target="_blank">WaveFunctionCollapse</a>. Lá, você encontrará explicações adicionais e exemplos que ajudam a entender como o algoritmo funciona na prática.
+        </p>
+        <p>
+            Esta página, assim como a implementação específica deste algoritmo e outros projetos que desenvolvi, estão disponíveis no meu GitHub e no meu portfólio online. Para saber mais sobre meus trabalhos e acompanhar minhas criações, visite: <a href="https://www.franciscoborba.tech/" target="_blank">Francisco Borba - Portfólio</a> ou entre em contato pelo meu email <a href="mailto:chicogborba@gmail.com">chicogborba@gmail.com</a>.
+        </p>
+    </section>
+
+    <div class="mainGrid-container">
+      <p class="tip">( Clique em qualquer quadrado pra iniciar )</p>
+      <div class="mainGrid" id="grid"></div>
+      <button onclick="resetGrid()" id="reset-button">Reiniciar Mapa</button>
+    </div>
+
+    <footer>
+        <p>© 2024 - Exemplo de algoritmo de Wave Function Collapse por <strong>Francisco Borba</strong></p>
+    </footer>
+    <script src='main.js'></script>
 </body>
 </html>
